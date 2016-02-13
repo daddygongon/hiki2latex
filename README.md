@@ -1,8 +1,6 @@
 # Hiki2latex
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hiki2latex`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+convert hikidoc to latex format.
 
 ## Installation
 
@@ -22,7 +20,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use as a gem library:
+
+    require 'hiki2latex'
+
+or as a command line tool:
+
+```ruby
+Usage: hiki2latex [options] FILE
+    -v, --version                    show program Version.
+    -l, --level VALUE                set Level for output section.
+    -p, --plain FILE                 make Plain document.
+    -b, --bare FILE                  make Bare document.
+        --head FILE                  put headers of maketitle file.
+        --pre FILE                   put preamble file.
+        --post FILE                  put post file.
+```
 
 ## Development
 
@@ -32,7 +45,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/hiki2latex. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/daddygongon/hiki2latex. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
