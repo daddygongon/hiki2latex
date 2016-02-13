@@ -1,6 +1,6 @@
 # Hiki2latex
 
-convert hikidoc to latex format.
+convert hikidoc text to latex format.
 
 ## Installation
 

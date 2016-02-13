@@ -9,8 +9,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Shigeto R. Nishitani"]
   spec.email         = ["shigeto_nishitani@me.com"]
 
-  spec.summary       = %q{convert hiki text to latex.}
-  spec.description   = %q{convert hiki text to latex format.}
+  spec.summary       = %q{convert hikidoc text to latex format.}
+  spec.description   = <<-EOF
+   hiki2latex is a format converter from hikidoc to latex, using hikidoc.
+EOF
   spec.homepage      = 'https://github.com/daddygongon/hiki2latex'
   spec.license       = "MIT"
 
@@ -27,9 +29,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version = '>= 1.8.6'
+
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "yard", "~> 0.8"
-  spec.add_development_dependency "hikidoc","~>0.1.0"
+  spec.add_runtime_dependency "hikidoc","~>0.1.0"
 end
