@@ -15,7 +15,7 @@ class LatexOutput
   def initialize(suffix = "")
     @suffix = suffix
 #    @f = nil
-    @f, @head, @caption, @table ="","","",""
+    reset
   end
 
   def reset
@@ -62,11 +62,12 @@ class LatexOutput
       end
       return
     end
-    if level==1 then
+    case level
+    when 1
       @f << "\\section\{#{title}\}\n"
-    elsif level==2 then
+    when 2
       @f << "\\subsection\{#{title}\}\n"
-    elsif level==3 then
+    when 3
       @f << "\\subsubsection\{#{title}\}\n"
     else
       @f << "\\paragraph\{#{title}\}\n"
