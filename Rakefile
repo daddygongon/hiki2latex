@@ -20,4 +20,9 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-
+task :update do
+  system 'git add -A'
+  system 'git commit'
+  system 'git push -u origin master'
+  system 'bundle exec rake release'
+end

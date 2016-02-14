@@ -44,17 +44,24 @@ class  Hiki2latexTest < Test::Unit::TestCase
     assert_equal result, "$test_test_test$\n\n"
   end
 
-  must "check for dmath" do
+  must "check for dmath with snake" do
     p input=%q|{{dmath 'f_x_x'}}|
     result=HikiDoc.to_latex(input)
     p result
     assert_equal result, "\\begin{equation}\nf_x_x\n\\end{equation}"
   end
 
-  must "check for math" do
+  must "check for math with snake" do
     p input=%q|{{math 'f_x'}}|
     result=HikiDoc.to_latex(input)
     p result
     assert_equal result, "$f_x$"
+  end
+
+  must "check on url to verb with snake" do
+    p input="[[http://hoge_hoge_hoge]]"
+    result=HikiDoc.to_latex(input)
+    p result
+    assert_equal result, "\\verb|http://hoge_hoge_hoge|\n\n"
   end
 end

@@ -136,16 +136,9 @@ class LatexOutput
 
   def escape_snake_names(str)
     str.gsub!(/_/,"\\_")
-    patterns = [/\$(.+?)\$/ , /verb\|(.+?)\|/ , /equation(.+?)equation/m ]
+    patterns = [/\$(.+?)\$/ , /\\verb\|(.+?)\|/, /equation(.+?)equation/m ]
     patterns.each{|pattern|
-      str.gsub!(pattern) {|text|
-#      p text
-      if text =~ /\\_/ then
-        text.gsub!(/\\_/,"_")
-      else
-        text
-      end
-      }
+      str.gsub!(/\\_/,"_")    if str.match(pattern)
     }
     str
   end
@@ -337,7 +330,11 @@ class LatexOutput
 
 
   def hyperlink(uri, title)
-    %Q(\\verb\|#{title}(#{uri})\|)
+    if uri==title then
+      %Q(\\verb\|#{uri}\|)
+    else
+      %Q(\\verb\|#{title}(#{uri})\|)
+    end
   end
 
 end
