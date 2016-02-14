@@ -98,7 +98,7 @@ class LatexOutput
     when 'math'
       @f << "\$#{tmp[1]}\$"
     else
-      @f << "Don\'t know \verb|{{#{str}}}|\n"
+      @f << "Don\'t know \\verb|{{#{str}}}|\n"
     end
  end
 
@@ -118,7 +118,7 @@ class LatexOutput
 #    when 'attach_view'
 #      @f << "\n\\includegraphics[scale=0.3]\{./#{tmp[1]}\}\n"
     else
-      %Q(\\verb\|{{#{src}}}\|)
+      @f << %Q(\\verb\|{{#{src}}}\|)
     end
   end
 
@@ -139,7 +139,7 @@ class LatexOutput
     patterns = [/\$(.+?)\$/ , /verb\|(.+?)\|/ , /equation(.+?)equation/m ]
     patterns.each{|pattern|
       str.gsub!(pattern) {|text|
-      p text
+#      p text
       if text =~ /\\_/ then
         text.gsub!(/\\_/,"_")
       else
