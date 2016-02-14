@@ -21,6 +21,7 @@ Rake::TestTask.new(:test) do |test|
 end
 
 task :update do
+  system 'emacs ./lib/hiki2latex/version.rb'
   system 'git add -A'
   system 'git commit'
   system 'git push -u origin master'

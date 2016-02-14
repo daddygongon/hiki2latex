@@ -88,11 +88,9 @@ class LatexOutput
     when 'attach_view'
       @f << "\\begin{figure}[htbp]\\begin{center}\n"
       @f << "\\includegraphics[width=6cm]\{./#{tmp[1]}\}\n"
-#      @f << "\\vspace{-2.5mm}\n"
       @f << "\\caption\{"+@caption+"\}\n"
-#      @f << "\\vspace{-10mm}\n"
       @f << "\\label\{default\}\\end\{center\}\\end\{figure\}\n"
-      @caption = ""
+      @caption = "" #reset caption
     when 'dmath'
       @f << "\\begin{equation}\n#{tmp[1]}\n\\end{equation}"
     when 'math'
@@ -106,19 +104,20 @@ class LatexOutput
     str
   end
 
+  # inline means only in table??
   def inline_plugin(src)
     if ( /(\w+)\s+\'(.+)\'/ =~src ) or ( /(\w+)\((.+)\)/ =~ src ) or (/(\w+)/ =~ src)
       tmp = [$1,$2]
     end
     case tmp[0]
     when 'dmath'
-      @f << "\\begin{equation}\n#{tmp[1]}\n\\end{equation}"
+       "\\begin{equation}\n#{tmp[1]}\n\\end{equation}"
     when 'math'
-      @f << "\$#{tmp[1]}\$"
+       "\$#{tmp[1]}\$"
 #    when 'attach_view'
-#      @f << "\n\\includegraphics[scale=0.3]\{./#{tmp[1]}\}\n"
+#       "\n\\includegraphics[scale=0.3]\{./#{tmp[1]}\}\n"
     else
-      @f << %Q(\\verb\|{{#{src}}}\|)
+       %Q(\\verb\|{{#{src}}}\|)
     end
   end
 
@@ -300,7 +299,7 @@ class LatexOutput
     buf << "\\hline\n\\end{tabular}\n"
     buf << "\\label{default}\n\\end{center}\\end{table}\n"
     @caption = ""
-    buf << "%横罫を入れる場合は， \\hline, \\cline{2-3}などで．\n\n"
+    buf << "%for inserting separate lines, use \\hline, \\cline{2-3} etc.\n\n"
     return buf
   end
 
