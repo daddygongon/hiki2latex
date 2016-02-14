@@ -13,5 +13,11 @@ YARD::Rake::YardocTask.new
 
 RSpec::Core::RakeTask.new(:spec)
 
+Rake::TestTask.new(:test) do |test|
+  test.libs << "test"
+  test.libs << "lib"
+  test.test_files = FileList['test/**/*_test.rb']
+  test.verbose = true
+end
 
 

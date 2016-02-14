@@ -93,6 +93,10 @@ class LatexOutput
 #      @f << "\\vspace{-10mm}\n"
       @f << "\\label\{default\}\\end\{center\}\\end\{figure\}\n"
       @caption = ""
+    when 'dmath'
+      @f << "\\begin{equation}\n#{tmp[1]}\n\\end{equation}"
+    when 'math'
+      @f << "\$#{tmp[1]}\$"
     else
       @f << "Don\'t know \verb|{{#{str}}}|\n"
     end
@@ -108,9 +112,9 @@ class LatexOutput
     end
     case tmp[0]
     when 'dmath'
-      "\\begin{equation}\n#{tmp[1]}\n\\end{equation}"
+      @f << "\\begin{equation}\n#{tmp[1]}\n\\end{equation}"
     when 'math'
-      "\$#{tmp[1]}\$"
+      @f << "\$#{tmp[1]}\$"
 #    when 'attach_view'
 #      @f << "\n\\includegraphics[scale=0.3]\{./#{tmp[1]}\}\n"
     else
@@ -132,26 +136,16 @@ class LatexOutput
 
   def escape_snake_names(str)
     str.gsub!(/_/,"\\_")
-    str.gsub!(/\$.+?\$/){ |text|
+    patterns = [/\$(.+?)\$/ , /verb\|(.+?)\|/ , /equation(.+?)equation/m ]
+    patterns.each{|pattern|
+      str.gsub!(pattern) {|text|
+      p text
       if text =~ /\\_/ then
         text.gsub!(/\\_/,"_")
-        else
+      else
         text
       end
-    }
-    str.gsub!(/\verb|.+?|/){ |text|
-      if text =~ /\\_/ then
-        text.gsub!(/\\_/,"_")
-        else
-        text
-      end
-    }
-    str.gsub!(/equation.+?equation/m){ |text|
-      if text =~ /\\_/ then
-        text.gsub!(/\\_/,"_")
-        else
-        text
-      end
+      }
     }
     str
   end

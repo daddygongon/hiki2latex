@@ -35,5 +35,6 @@ EOF
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "yard", "~> 0.8"
+  spec.add_development_dependency "test-unit"
   spec.add_runtime_dependency "hikidoc","~>0.1.0"
 end
