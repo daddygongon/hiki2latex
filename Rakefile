@@ -13,6 +13,7 @@ YARD::Rake::YardocTask.new
 
 RSpec::Core::RakeTask.new(:spec)
 
+desc "test using unit/test"
 Rake::TestTask.new(:test) do |test|
   test.libs << "test"
   test.libs << "lib"
@@ -20,6 +21,7 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
+desc "all procedure for release."
 task :update do
   system 'emacs ./lib/hiki2latex/version.rb'
   system 'git add -A'

@@ -6,14 +6,15 @@ require 'hikidoc'
 
 class HikiDoc
   def HikiDoc.to_latex(src, options = {})
-    new(LatexOutput.new(), options).compile(src)
+    new(LatexOutput.new(options), options).compile(src)
   end
 end
 
 
 class LatexOutput
-  def initialize(suffix = "")
-    @suffix = suffix
+  def initialize(options={})
+    @suffix = ""
+    @listings = options[:listings]
 #    @f = nil
     reset
   end
@@ -51,8 +52,10 @@ class LatexOutput
     tmp=title.split(/:/)
     if tmp.size!=1 then
       case tmp[0]
-      when 'title','author','date'
+      when 'title','author','date','abstract'
         @head << "\\#{tmp[0]}\{#{tmp[1]}\}\n"
+      when 'Title','Author','Date','Abstract'
+        @head << "\\#{tmp[0].downcase}\{#{tmp[1]}\}\n"
       when 'caption'
         @caption << "#{tmp[1]}"
       when 'reference'
@@ -164,13 +167,28 @@ class LatexOutput
   end
 
   def block_preformatted(str, info)
-    preformatted(text(str))
+    if (@listings==true and info!=nil) then
+      style='customRuby' if info=='ruby'
+      style='customCsh' if (info=='tcsh' or info=='csh')
+      style='customTeX' if info=='tex'
+      preformatted_with_style(str,style)
+    else
+      preformatted(text(str))
+    end
   end
+
   def preformatted(str)
     @f.slice!(-1)
     @f << "\\begin{quote}\\begin{verbatim}\n"
     @f << str+"\n"
     @f << "\\end{verbatim}\\end{quote}\n"
+  end
+
+  def preformatted_with_style(str,style)
+    @f.slice!(-1)
+    @f << "\\begin{lstlisting}[style=#{style}]\n"
+    @f << str+"\n"
+    @f << "\\end{lstlisting}\n"
   end
 
   def list_begin

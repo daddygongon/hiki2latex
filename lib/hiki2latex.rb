@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'optparse'
 require "hiki2latex/version"
 #require "hiki2latex/hikidoc"
@@ -13,6 +14,7 @@ module Hiki2latex
     def initialize(argv=[])
       @argv = argv
       @pre=@head=@post=nil
+      @listings=false
     end
 
     def execute
@@ -28,6 +30,7 @@ module Hiki2latex
         opt.on('--head FILE', 'put headers of maketitle file.') { |file| @head=file }
         opt.on('--pre FILE', 'put preamble file.') { |file| @pre=file }
         opt.on('--post FILE', 'put post file.') { |file| @post=file }
+        opt.on('--listings', 'use listings.sty for preformat with style.') {@listings=true }
       end
       command_parser.banner = "Usage: hiki2latex [options] FILE"
       command_parser.parse!(@argv)
@@ -37,7 +40,9 @@ module Hiki2latex
     end
 
     def plain_doc(file)
-      if @pre==nil then
+      if @listings==true then
+        puts listings_str
+      elsif @pre==nil then
         puts "\\documentclass[12pt,a4paper]{jsarticle}"
         puts "\\usepackage[dvipdfmx]{graphicx}"
       else
@@ -45,18 +50,50 @@ module Hiki2latex
       end
       puts "\\begin{document}"
       puts File.read(@head) if @head!=nil
-      puts HikiDoc.to_latex(File.read(file))
+      puts HikiDoc.to_latex(File.read(file),{:listings=>@listings})
       puts File.read(@post) if @post!=nil
       puts "\\end{document}"
     end
+
     def bare_doc(file)
-      puts HikiDoc.to_latex(File.read(file),{:level=>@level})
+      puts HikiDoc.to_latex(File.read(file),{:level=>@level,:listings=>@listings})
+    end
+
+    def listings_str
+      str = <<"EOS"
+\\documentclass[12pt,a4paper]{jsarticle}
+\\usepackage[dvipdfmx]{graphicx}
+\\usepackage[dvipdfmx]{color}
+\\usepackage{listings}
+
+\\lstset{
+  basicstyle={\\small\\ttfamily},
+  identifierstyle={\\small},
+  commentstyle={\\small\\itshape\\color{red}},
+  keywordstyle={\\small\\bfseries\\color{cyan}},
+  ndkeywordstyle={\\small},
+  stringstyle={\\small\\color{blue}},
+  frame={tb},
+  breaklines=true,
+  numbers=left,
+  numberstyle={\\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  lineskip=-0.5ex
+}
+\\lstdefinestyle{customCsh}{
+  language={csh},
+  numbers=none,
+}
+\\lstdefinestyle{customRuby}{
+  language={ruby},
+  numbers=left,
+}
+EOS
     end
 
   end
 end
-
-
-=begin
-=end
 

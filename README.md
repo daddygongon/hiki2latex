@@ -35,6 +35,7 @@ Usage: hiki2latex [options] FILE
         --head FILE                  put headers of maketitle file.
         --pre FILE                   put preamble file.
         --post FILE                  put post file.
+        --listings                   use listings.sty for preformat with style.
 ```
 
 ## Development
