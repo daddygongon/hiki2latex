@@ -65,7 +65,7 @@ module Hiki2latex
 \\usepackage[dvipdfmx]{graphicx}
 \\usepackage[dvipdfmx]{color}
 \\usepackage{listings}
-
+% to use japanese correctly, install jlistings.
 \\lstset{
   basicstyle={\\small\\ttfamily},
   identifierstyle={\\small},

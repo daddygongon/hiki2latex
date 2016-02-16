@@ -140,7 +140,14 @@ class LatexOutput
     str.gsub!(/_/,"\\_")
     patterns = [/\$(.+?)\$/ , /\\verb\|(.+?)\|/, /equation(.+?)equation/m ]
     patterns.each{|pattern|
-      str.gsub!(/\\_/,"_")    if str.match(pattern)
+#      str.gsub!(/\\_/,"_")    if str.match(pattern)
+      str.gsub!(pattern){|text|
+        if text =~ /\\_/ then
+          text.gsub!(/\\_/,'_')
+        else
+          text
+        end
+      }
     }
     str
   end
@@ -171,6 +178,7 @@ class LatexOutput
       style='customRuby' if info=='ruby'
       style='customCsh' if (info=='tcsh' or info=='csh')
       style='customTeX' if info=='tex'
+      style='customJava' if info=='java'
       preformatted_with_style(str,style)
     else
       preformatted(text(str))
@@ -309,7 +317,8 @@ class LatexOutput
 
     cont.each_with_index{|line,i|
       line.each{|ele|
-        buf << "#{ele} &"
+#        buf << "#{ele} &"
+        buf << escape_snake_names(ele)+" &"
       }
       buf.slice!(-1)
       buf << ((i==0)? "\\\\ \\hline\n" : "\\\\\n")

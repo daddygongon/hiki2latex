@@ -31,7 +31,7 @@ class  Hiki2latexTest < Test::Unit::TestCase
 
   must "convert author" do
     result=HikiDoc.to_latex("!Author:西谷滋人")
-    assert_equal result, "\\Author{西谷滋人}\n"
+    assert_equal result, "\\author{西谷滋人}\n\\date{}\n\\maketitle\n"
   end
 
   must "convert snake strings" do
@@ -45,23 +45,36 @@ class  Hiki2latexTest < Test::Unit::TestCase
   end
 
   must "check for dmath with snake" do
-    p input=%q|{{dmath 'f_x_x'}}|
+    input=%q|{{dmath 'f_x_x'}}|
     result=HikiDoc.to_latex(input)
-    p result
     assert_equal result, "\\begin{equation}\nf_x_x\n\\end{equation}"
   end
 
   must "check for math with snake" do
-    p input=%q|{{math 'f_x'}}|
+    input=%q|{{math 'f_x'}}|
     result=HikiDoc.to_latex(input)
-    p result
     assert_equal result, "$f_x$"
   end
 
   must "check on url to verb with snake" do
-    p input="[[http://hoge_hoge_hoge]]"
+    input="[[http://hoge_hoge_hoge]]"
     result=HikiDoc.to_latex(input)
-    p result
     assert_equal result, "\\verb|http://hoge_hoge_hoge|\n\n"
   end
+
+  must "check on list with snake and uri" do
+    p input="# underbar(_)がlatexでは全て引っかかる．対応済み \verb|hiki2latex_math|"
+    result=HikiDoc.to_latex(input)
+    p result
+#    assert_equal result, "\\verb|http://hoge_hoge_hoge|\n\n"
+  end
+
+  must "check on table with snake and uri" do
+    p input="||under_score|| 8/11 || [[hiki2latex_math]]"
+    result=HikiDoc.to_latex(input)
+    p result
+#    assert_equal result, "\\verb|http://hoge_hoge_hoge|\n\n"
+  end
+
+
 end
