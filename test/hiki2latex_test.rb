@@ -46,13 +46,13 @@ class  Hiki2latexTest < Test::Unit::TestCase
 
   must "check for dmath with snake" do
     input=%q|{{dmath 'f_x_x'}}|
-    result=HikiDoc.to_latex(input)
+      result=HikiDoc.to_latex(input)
     assert_equal result, "\\begin{equation}\nf_x_x\n\\end{equation}"
   end
 
   must "check for math with snake" do
     input=%q|{{math 'f_x'}}|
-    result=HikiDoc.to_latex(input)
+      result=HikiDoc.to_latex(input)
     assert_equal result, "$f_x$"
   end
 
@@ -63,18 +63,48 @@ class  Hiki2latexTest < Test::Unit::TestCase
   end
 
   must "check on list with snake and uri" do
-    p input="# underbar(_)がlatexでは全て引っかかる．対応済み \verb|hiki2latex_math|"
+    input="# underbar(_)がlatexでは全て引っかかる．対応済み \verb|hiki2latex_math|"
     result=HikiDoc.to_latex(input)
-    p result
-#    assert_equal result, "\\verb|http://hoge_hoge_hoge|\n\n"
+    expected ="\\begin{enumerate}\n\\item underbar(\\_)がlatexでは全て引っかかる．対応済み \verb|hiki2latex\\_math|\n\\end{enumerate}\n"
+    assert_equal result, expected
   end
 
   must "check on table with snake and uri" do
-    p input="||under_score|| 8/11 || [[hiki2latex_math]]"
+    input="||under_score|| 8/11 || [[hiki2latex_math]]"
     result=HikiDoc.to_latex(input)
-    p result
-#    assert_equal result, "\\verb|http://hoge_hoge_hoge|\n\n"
+    expected = "\\begin{table}[htbp]\\begin{center}\n\\caption{}\n\\begin{tabular}{llll}\n\\hline\nunder\\_score  &8/11   &\\verb|hiki2latex_math|  &  \\\\ \\hline\n\\hline\n\\end{tabular}\n\\label{default}\n\\end{center}\\end{table}\n%for inserting separate lines, use \\hline, \\cline{2-3} etc.\n\n"
+    assert_equal result,expected
+  end
+end
+
+class Hiki2latexCommandTest < Test::Unit::TestCase
+  def setup
+    @command=::Hiki2latex::Command.new
+#    assert_nil @command.execute
   end
 
+  must "kill tableofcontents" do
+    input="\\tableofcontents\n sample"
+    result = @command.kill_head_tableofcontents(input)
+    expected="\n sample"
+    assert_equal expected,result
+  end
+
+  must "mod_abstract in engligh" do
+    input="\\tableofcontents\n\\section{abstract} \n sample\n \\section{introduction}\n"
+    result = @command.mod_abstract(input)
+    result
+    expected = "\n\\abstract{\n sample\n}\n\\tableofcontents\n \\section{introduction}\n"
+    assert_equal result, expected
+  end
+
+  must "mod_abstract 概要 in Japanese" do
+    p input="\\tableofcontents\n\\section{概要} \n sample\n \\section{introduction}\n"
+    result = @command.mod_abstract(input)
+    p result
+    expected = "\n\\abstract{\n sample\n}\n\\tableofcontents\n \\section{introduction}\n"
+    assert_equal result, expected
+  end
 
 end
+

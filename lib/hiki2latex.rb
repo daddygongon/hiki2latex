@@ -3,6 +3,7 @@ require 'optparse'
 require "hiki2latex/version"
 #require "hiki2latex/hikidoc"
 require "hiki2latex/hiki2latex"
+require 'pp'
 
 module Hiki2latex
   class Command
@@ -66,17 +67,18 @@ module Hiki2latex
     end
 
     def mod_abstract(text)
-      abstract = []
+      abstract,section = [],[]
       content = ""
-      section = []
       text.split("\n").each do |line|
         case line
-        when /\\section(.+)/
+        when /^\\section(.+)/
           section.push $1
         end
 
         case section[-1]
         when /.+abstract.+/
+          abstract << line+"\n"
+        when /.+概要.+/
           abstract << line+"\n"
         else
           content << line+"\n"

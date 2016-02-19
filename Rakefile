@@ -2,6 +2,7 @@ require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 require "rake/testtask"
 require 'yard'
+require 'systemu'
 
 #task :default => :test
 task :default do
@@ -22,13 +23,20 @@ Rake::TestTask.new(:test) do |test|
 end
 
 desc "all procedure for release."
-task :update do
+task :update =>[:setenv] do
   system 'emacs ./lib/hiki2latex/version.rb'
   system 'git add -A'
   system 'git commit'
   system 'git push -u origin master'
-  print 'in kwansei.ac.jp, you need setenv for proxy.'
-  puts 'setenv HTTP_PROXY http://proxy.kwansei.ac.jp:8080'
-  puts 'setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
   system 'bundle exec rake release'
+end
+
+desc "setenv for release from Kwansei gakuin."
+task :setenv do
+  status, stdout, stderr  = systemu "scselect \| grep \'\*\' |grep KG"
+  puts stdout
+  if stdout != nil then
+    system 'setenv HTTP_PROXY http://proxy.kwansei.ac.jp:8080'
+    system 'setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
+  end
 end
