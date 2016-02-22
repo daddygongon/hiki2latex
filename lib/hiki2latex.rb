@@ -35,11 +35,11 @@ module Hiki2latex
       end
       command_parser.banner = "Usage: hiki2latex [options] FILE"
       command_parser.parse!(@argv)
-      #      p @argv
       plain_doc(@argv[0]) if @argv[0]!=nil
       exit
     end
 
+    # pre, post, listingsなどの拡張を処理
     def plain_doc(file)
       if @listings==true then
         puts listings_preamble
@@ -66,7 +66,9 @@ module Hiki2latex
       text.gsub!(/^\\tableofcontents/,'')
     end
 
+    # convert section to abstract in the plain text
     def mod_abstract(text)
+#      return text
       abstract,section = [],[]
       content = ""
       text.split("\n").each do |line|
@@ -74,20 +76,23 @@ module Hiki2latex
         when /^\\section(.+)/
           section.push $1
         end
-
+#        p section[-1]
         case section[-1]
-        when /.+abstract.+/
+        when /\{abstract\}/, /\{【abstract】\}/
           abstract << line+"\n"
-        when /.+概要.+/
+        when /\{概要\}/, /\{【概要】\}/
           abstract << line+"\n"
         else
           content << line+"\n"
         end
       end
-      abstract.delete_at(0)
-      content.gsub!(/\\tableofcontents/){|text|
-        tt="\n\\abstract\{\n#{abstract.join}\}\n\\tableofcontents"
-      }
+#      p abstract
+      if abstract.size>1 then
+        abstract.delete_at(0)
+        content.gsub!(/\\tableofcontents/){|text|
+          tt="\n\\abstract\{\n#{abstract.join}\}\n\\tableofcontents"
+        }
+      end
       return content
     end
 

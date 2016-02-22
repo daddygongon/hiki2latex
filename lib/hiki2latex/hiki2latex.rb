@@ -61,11 +61,16 @@ class LatexOutput
       when 'reference'
         @f << "\\section*\{#{tmp[1]}\}\n"
       else
-        @f << "\\#{tmp[0]}\{#{tmp[1]}\}\n"
-#        @f << "#{title}\n"
+#        @f << "\\#{tmp[0]}\{#{tmp[1]}\}\n"
+        headline_section(level,title)
       end
       return
+    else
+      headline_section(level,title)
     end
+  end
+
+  def headline_section(level,title)
     case level
     when 1
       @f << "\\section\{#{title}\}\n"
