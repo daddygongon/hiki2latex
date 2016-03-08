@@ -130,6 +130,13 @@ class LatexOutput
     end
   end
 
+#  def compile_inline_markup(text)
+  def wiki_name(text)
+    text
+  end
+
+
+
   def escape_html(text)
     text
   end
@@ -326,7 +333,8 @@ class LatexOutput
 #        buf << "#{ele} &"
         buf << escape_snake_names(ele)+" &"
       }
-      buf.slice!(-1)
+#      buf.slice!(-2)
+      buf.slice!(-4..-1)
       buf << ((i==0)? "\\\\ \\hline\n" : "\\\\\n")
     }
     buf << "\\hline\n\\end{tabular}\n"

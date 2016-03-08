@@ -39,7 +39,7 @@ module Hiki2latex
       exit
     end
 
-    # pre, post, listingsãªã©ã®æ‹¡å¼µã‚’å‡¦ç†
+    # pre, post, listings’¤Ê’¤É’¤Î’³È’Ä¥’¤ò’½è’Íı
     def plain_doc(file)
       if @listings==true then
         puts listings_preamble
@@ -79,9 +79,9 @@ module Hiki2latex
         end
 #        p section[-1]
         case section[-1]
-        when /\{abstract\}/, /\{ã€abstractã€‘\}/
+        when /\{abstract\}/, /\{’¡Úabstract’¡Û\}/
           abstract << line+"\n"
-        when /\{æ¦‚è¦\}/, /\{ã€æ¦‚è¦ã€‘\}/
+        when /\{’³µ’Í×\}/, /\{’¡Ú’³µ’Í×’¡Û\}/
           abstract << line+"\n"
         else
           content << line+"\n"

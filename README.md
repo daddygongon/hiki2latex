@@ -8,11 +8,12 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'hiki2latex'
+
 ```
 
 And then execute:
 
-    $ bundle
+    $ bundle 
 
 Or install it yourself as:
 
@@ -21,12 +22,15 @@ Or install it yourself as:
 ## Usage
 
 Use as a gem library:
-
+```ruby
     require 'hiki2latex'
+    
+    puts HikiDoc.to_latex(File.read(ARGV[0]),{:level=>@level,:listings=>@listings})
+```
 
 or as a command line tool:
 
-```ruby
+```csh
 Usage: hiki2latex [options] FILE
     -v, --version                    show program Version.
     -l, --level VALUE                set Level for output section.
@@ -36,6 +40,9 @@ Usage: hiki2latex [options] FILE
         --pre FILE                   put preamble file.
         --post FILE                  put post file.
         --listings                   use listings.sty for preformat with style.
+
+> hiki2latex --pre PRICM_preamble.tex --post biblio.tex -p test.hiki > test.tex
+> hiki2latex --listings --post post.tex -p ./test.hiki > test.tex
 ```
 
 ## Development

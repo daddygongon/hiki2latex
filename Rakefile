@@ -33,10 +33,13 @@ end
 
 desc "setenv for release from Kwansei gakuin."
 task :setenv do
-  status, stdout, stderr  = systemu "scselect \| grep \'\*\' |grep KG"
-  puts stdout
-  if stdout != nil then
-    system 'setenv HTTP_PROXY http://proxy.kwansei.ac.jp:8080'
-    system 'setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
-  end
+#  status, stdout, stderr  = systemu "scselect \| grep \'\*\' |grep KG"
+#  puts stdout
+#  p stdout != nil
+#  if stdout != nil then
+    p command='setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
+    system command
+    p command='setenv HTTPS_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
+    system command
+#  end
 end
