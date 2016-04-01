@@ -37,5 +37,6 @@ EOF
   spec.add_development_dependency "yard", "~> 0.8"
   spec.add_development_dependency "test-unit"
   spec.add_development_dependency "systemu"
+  spec.add_development_dependency "hiki2md"
   spec.add_runtime_dependency "hikidoc","~>0.1.0"
 end

@@ -185,6 +185,7 @@ class LatexOutput
 
   def strong(item)
 #    @f << "\\textbf\{#{item}\}"
+    @f << "#{item}"
   end
 
   def block_preformatted(str, info)
@@ -220,8 +221,8 @@ class LatexOutput
   end
 
   def list_open(type)
-    @f.slice!(-1) #ã“ã„ã¤ãŒã‚ã‹ã‚‰ã‚“ï¼Ž\begin{item..}ã®å‰ã«æ”¹è¡ŒãŒå…¥ã‚‹ã‹ã‚‰ï¼Žï¼Žï¼Žãªãœï¼Ÿ
-    #äºŒé‡ã®itemizeã§ãŠã‹ã—ããªã‚‹ãŒï¼Œã¸ã‚“ãªã¨ã“ã‚ã§æ”¹è¡Œã¯å…¥ã‚‰ãªã„ã®ã§ï¼Ž
+    @f.slice!(-1) #’¤³’¤¤’¤Ä’¤¬’¤ï’¤«’¤é’¤ó’¡¥\begin{item..}’¤Î’Á°’¤Ë’²þ’¹Ô’¤¬’Æþ’¤ë’¤«’¤é’¡¥’¡¥’¡¥’¤Ê’¤¼’¡©
+    #’Æó’½Å’¤Îitemize’¤Ç’¤ª’¤«’¤·’¤¯’¤Ê’¤ë’¤¬’¡¤’¤Ø’¤ó’¤Ê’¤È’¤³’¤í’¤Ç’²þ’¹Ô’¤Ï’Æþ’¤é’¤Ê’¤¤’¤Î’¤Ç’¡¥
     case type
     when 'ul' then
       @f << "\\begin{itemize}\n"
@@ -244,7 +245,7 @@ class LatexOutput
   end
 
   def listitem_close
-    #      @f << "\n" #closeã§ã‚„ã‚‹ã¨ã†ã¾ãã„ã‹ãªã„ã¨ãã‚ã‚Šï¼Žlistitemã«æ”¹è¡Œã‚’ä»˜ã‘è¶³ã—ãŸï¼Ž
+    #      @f << "\n" #close’¤Ç’¤ä’¤ë’¤È’¤¦’¤Þ’¤¯’¤¤’¤«’¤Ê’¤¤’¤È’¤­’¤¢’¤ê’¡¥listitem’¤Ë’²þ’¹Ô’¤ò’ÉÕ’¤±’Â­’¤·’¤¿’¡¥
   end
 
   def listitem(item)
@@ -280,9 +281,9 @@ class LatexOutput
   end
 
   DT_ALIGN='l'
-  # tableã‹ã‚‰é€£çµä½œç”¨ç´ ã«å¯¾å¿œã—ãŸmatrixã‚’ä½œã‚‹
-  # input:lineã”ã¨ã«åˆ†å‰²ã•ã‚ŒãŸcont
-  # output:matrixã¨æœ€é•·åˆ—æ•°
+  # table’¤«’¤é’Ï¢’·ë’ºî’ÍÑ’ÁÇ’¤Ë’ÂÐ’±þ’¤·’¤¿matrix’¤ò’ºî’¤ë
+  # input:line’¤´’¤È’¤Ë’Ê¬’³ä’¤µ’¤ì’¤¿cont
+  # output:matrix’¤È’ºÇ’Ä¹’Îó’¿ô
   def make_matrix(cont)
     t_matrix=[]
     cont.each{|line|
@@ -318,7 +319,7 @@ class LatexOutput
     return t_matrix,max_col
   end
 
-  # tableã‚’æ•´å½¢ã™ã‚‹
+  # table’¤ò’À°’·Á’¤¹’¤ë
   def make_table
     cont,max_col = make_matrix(@table.split("\n"))
 

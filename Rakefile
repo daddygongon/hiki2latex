@@ -10,17 +10,14 @@ task :default do
 end
 
 
-YARD::Rake::YardocTask.new
+desc "make documents by yard"
+task :yard do
+  system "hiki2md docs/readme.hiki > docs/README.en.md"
+  system "hiki2md docs/readme.ja.hiki > docs/README.ja.md"
+  YARD::Rake::YardocTask.new
+end
 
 RSpec::Core::RakeTask.new(:spec)
-
-desc "test using unit/test"
-Rake::TestTask.new(:test) do |test|
-  test.libs << "test"
-  test.libs << "lib"
-  test.test_files = FileList['test/**/*_test.rb']
-  test.verbose = true
-end
 
 desc "all procedure for release."
 task :update =>[:setenv] do
