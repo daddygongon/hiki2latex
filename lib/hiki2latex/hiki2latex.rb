@@ -170,8 +170,10 @@ class LatexOutput
     @f << "#{lines.join("\n")}\n\n"
   end
   def blockquote_open()
+    @f << "\\begin{quotation}\n"
   end
   def blockquote_close()
+    @f << "\\end{quotation}\n"
   end
 
   def del(item)
