@@ -24,10 +24,10 @@ Usage: hiki2latex [options] FILE
 
 |ソース(hiki表示)|pdf(latex変換後)|
 |:----|:----|
-|[[Shunkuntype]]|[[Shunkuntype]]のレポート|
-|[[LPSO15研究会の例|LPSO15_fall_meeting_abst]]|{{attach_anchor(LPSO_abst.pdf)}}|
-|[[中間発表hand out例|AbstSample]]|{{attach_anchor(AbstSample.pdf)}}|
-|[[使っているformat集|DocumentFormatter_format_examples]]|
+|![](Shunkuntype)|![](Shunkuntype)のレポート|
+|[LPSO15研究会の例](LPSO15_fall_meeting_abst)|{{attach_anchor(LPSO_abst.pdf)}}|
+|[中間発表hand out例](AbstSample)|{{attach_anchor(AbstSample.pdf)}}|
+|[使っているformat集](DocumentFormatter_format_examples)|
 
 
 # 【仕様】
@@ -74,15 +74,15 @@ end
 
 |memo |date|hiki|
 |:----|:----|:----|
-|hikidoc.rbからhiki2latex.rb|15/8/4|[[hiki2latex_init]]|
+|hikidoc.rbからhiki2latex.rb|15/8/4|![](hiki2latex_init)|
 |hiki2latex.rbひな形作成|15/8/5|
 |@fをStringIOからStringへ|15/8/5|
-|graph+caption|15/8/6|[[LPSO15_fall_meeting_abst]]|
-|math|15/8/7| [[hiki2latex_math]]|
-|table| 15/8/8| [[hiki2latex_table]]|
-|under_score| 15/8/11 | [[hiki2latex_math]]|
-|gem化| 16/2/13 | [[hiki2latex_gemizing]]|
-|listings| 16/2/16 | [[hiki2latex_listings]]|
+|graph+caption|15/8/6|![](LPSO15_fall_meeting_abst)|
+|math|15/8/7| ![](hiki2latex_math)|
+|table| 15/8/8| ![](hiki2latex_table)|
+|under_score| 15/8/11 | ![](hiki2latex_math)|
+|gem化| 16/2/13 | ![](hiki2latex_gemizing)|
+|listings| 16/2/16 | ![](hiki2latex_listings)|
 
 
 # 【開発メモ】

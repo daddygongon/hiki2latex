@@ -26,8 +26,8 @@ module Hiki2latex
           puts opt.ver
         }
         opt.on('-l VALUE','--level','set Level for output section.'){|level| @level=level.to_i}
-        opt.on('-p FILE', '--plain','make Plain document.') { |file| plain_doc(file) }
-        opt.on('-b FILE', '--bare','make Bare document.') { |file| bare_doc(file) }
+        opt.on('-p FILE', '--plain','make Plain latex document.') { |file| plain_doc(file) }
+        opt.on('-b FILE', '--bare','make Bare latex document.') { |file| bare_doc(file) }
         opt.on('--head FILE', 'put headers of maketitle file.') { |file| @head=file }
         opt.on('--pre FILE', 'put preamble file.') { |file| @pre=file }
         opt.on('--post FILE', 'put post file.') { |file| @post=file }
