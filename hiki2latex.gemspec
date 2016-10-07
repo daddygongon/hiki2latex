@@ -38,5 +38,8 @@ EOF
   spec.add_development_dependency "test-unit"
   spec.add_development_dependency "systemu"
   spec.add_development_dependency "hiki2md"
+  spec.add_development_dependency "mathjax-yard"
+  spec.add_development_dependency "hiki2latex"
+
   spec.add_runtime_dependency "hikidoc","~>0.1.0"
 end

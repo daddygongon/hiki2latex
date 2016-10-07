@@ -1,29 +1,42 @@
 {{toc}}
 !【概要】
 hiki formatで書かれた文章を，latex formatに変換する
-!【documents】
-* [[http://rubygems.org/gems/hiki2latex]]
+!【置き場所】
+* [[rubygems|http://rubygems.org/gems/hiki2latex]]
+* [[Github|https://github.com/daddygongon/hiki2latex]]
 
 !【使用法】
-<<< bash
-Usage: hiki2latex [options] FILE
-    -v, --version                    show program Version.
-    -l, --level VALUE                set Level for output section.
-    -p, --plain FILE                 make Plain document.
-    -b, --bare FILE                  make Bare document.
-        --head FILE                  put headers of maketitle file.
-        --pre FILE                   put preamble file.
-        --post FILE                  put post file.
-        --listings                   use listings.sty for preformat with style.
+Use as a gem library:
+<<<ruby
+    require 'hiki2latex'
+    
+    puts HikiDoc.to_latex(File.read(ARGV[0]),{:level=>@level,:listings=>@listings})
 >>>
-*より詳細な使用法は，[[hiki2latex_gemizing]]にある．
-*西谷研の内部で利用するときに特化したマニュアルは[[こちら|hiki2latex_manual]]．
+
+or as a command line tool:
+
+:Usage: hiki2latex [options] FILE
+
+|| option || operation
+||    -v, --version     ||           show program Version.
+||    -l, --level VALUE ||               set Level for output section.
+||    -p, --plain FILE  ||               make Plain document.
+||    -b, --bare FILE   ||               make Bare document.
+||        --head FILE   ||               put headers of maketitle file.
+||        --pre FILE    ||               put preamble file.
+||        --post FILE   ||               put post file.
+||        --listings    ||               use listings.sty for preformat with style.
+ > hiki2latex --pre PRICM_preamble.tex --post biblio.tex -p test.hiki > test.tex
+ > hiki2latex --listings --post post.tex -p ./test.hiki > test.tex
+
+*より詳細な使用法は，nishitani0のhiki2latex_gemizingにある．
+*西谷研の内部で利用するときに特化したマニュアルはnishitani0のhiki2latex_manual．
 
 !!sample
 幾つかのサンプルを以下に示す．
 !!!caption:hiki2latexにより作成されたpdfファイトとその元ネタ．
 ||ソース(hiki表示)||pdf(latex変換後)
-||[[Shunkuntype]]||[[Shunkuntype]]のレポート
+||[[Shunkuntype|Shunkuntype]]のレポート
 ||[[LPSO15研究会の例|LPSO15_fall_meeting_abst]]||{{attach_anchor(LPSO_abst.pdf)}}
 ||[[中間発表hand out例|AbstSample]]||{{attach_anchor(AbstSample.pdf)}}
 ||[[使っているformat集|DocumentFormatter_format_examples]]||
@@ -40,7 +53,7 @@ Usage: hiki2latex [options] FILE
 # graph, tableは[h]で提供．
 
 !【具体的な使用例rakefile】
-具体的な使用例として[[Shunkuntype_report]]を作成した時のRakefile.rbを示す．何度も書き直す時は，このようにして自動化すべき．
+具体的な使用例として[[Shunkuntype_report|Shunkuntype_reportd]]を作成した時のRakefile.rbを示す．何度も書き直す時は，このようにして自動化すべき．
 <<< ruby
 task :shunkuntype do
   dir = '~/Sites/nishitani0/Internal/data/text/'

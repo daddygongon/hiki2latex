@@ -1,6 +1,7 @@
 # Hiki2latex
 convert hikidoc text to latex format.
 
+\![badge](https://badge.fury.io/rb/hiki2latex.png)
 ## Installation
 Add this line to your application's Gemfile:
 ```ruby
@@ -29,6 +30,10 @@ or as a command line tool:
 <dt>Usage</dt><dd> hiki2latex [options] FILE</dd>
 </dl>
 
+```
+> hiki2latex --pre PRICM_preamble.tex --post biblio.tex -p test.hiki > test.tex
+> hiki2latex --listings --post post.tex -p ./test.hiki > test.tex
+```
 
 | option | operation|
 |:----|:----|
@@ -41,10 +46,6 @@ or as a command line tool:
 |        --post FILE   |               put post file.|
 |        --listings    |               use listings.sty for preformat with style.|
 
-```
-> hiki2latex --pre PRICM_preamble.tex --post biblio.tex -p test.hiki > test.tex
-> hiki2latex --listings --post post.tex -p ./test.hiki > test.tex
-```
 
 ## Development
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec hiki2latex` to use the gem in this directory, ignoring other installed copies of this gem.

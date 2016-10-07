@@ -1,42 +1,58 @@
 require "bundler/gem_tasks"
-require "rspec/core/rake_task"
-require "rake/testtask"
 require 'yard'
-require 'systemu'
+require "rake/testtask"
+require 'fileutils'
+p base_path = File.expand_path('..', __FILE__)
+p basename = File.basename(base_path)
 
-#task :default => :test
 task :default do
   system 'rake -T'
 end
 
-
 desc "make documents by yard"
-task :yard do
-  system "hiki2md docs/readme.hiki > docs/README.en.md"
-  system "hiki2md docs/readme.ja.hiki > docs/README.ja.md"
+task :yard => [:hiki2md] do
   YARD::Rake::YardocTask.new
 end
 
-RSpec::Core::RakeTask.new(:spec)
-
-desc "all procedure for release."
-task :update =>[:setenv] do
-  system 'emacs ./lib/hiki2latex/version.rb'
-  system 'git add -A'
-  system 'git commit'
-  system 'git push -u origin master'
-  system 'bundle exec rake release'
+desc "transfer hikis/*.hiki to wiki"
+task :hiki2md do
+  files = Dir.entries('hikis')
+  files.each{|file|
+    name=file.split('.')
+    case name[1]
+    when 'hiki'
+      p command="hiki2md hikis/#{name[0]}.hiki > #{basename}.wiki/#{name[0]}.md"
+      system command
+    when 'gif','png','pdf'
+      FileUtils.cp("hikis/#{file}","#{basename}.wiki/#{file}",:verbose=>true)
+      FileUtils.cp("hikis/#{file}","doc/#{file}",:verbose=>true)
+    end
+  }
+  readme_en="#{basename}.wiki/README_en.md"
+  readme_ja="#{basename}.wiki/README_ja.md"
+  if File.exists?(readme_en)
+    FileUtils.cp(readme_en,"./README.md",:verbose=>true)
+  elsif File.exists?(readme_ja)
+    FileUtils.cp(readme_ja,"./README.md",:verbose=>true)
+    FileUtils.cp(readme_ja,"#{basename}.wiki/Home.md",:verbose=>true)
+  end
 end
 
-desc "setenv for release from Kwansei gakuin."
-task :setenv do
-#  status, stdout, stderr  = systemu "scselect \| grep \'\*\' |grep KG"
-#  puts stdout
-#  p stdout != nil
-#  if stdout != nil then
-    p command='setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
-    system command
-    p command='setenv HTTPS_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
-    system command
-#  end
+desc "transfer hikis/*.hiki to latex"
+task :latex do
+  target = 'handout_sample'
+  command = "hiki2latex --pre latexes/handout_pre.tex hikis/#{target}.hiki > latexes/#{target}.tex"
+  system command
+  command = "open latexes/#{target}.tex"
+  system command
+end
+
+
+desc "transfer hikis/*.hiki to latex"
+task :latex do
+  target = 'handout_sample'
+  command = "hiki2latex --pre latexes/handout_pre.tex hikis/#{target}.hiki > latexes/#{target}.tex"
+  system command
+  command = "open latexes/#{target}.tex"
+  system command
 end
