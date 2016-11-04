@@ -1,0 +1,47 @@
+\contentsline {section}{\numberline {1}【documents】}{1}
+\contentsline {section}{\numberline {2}【使用法】}{1}
+\contentsline {subsection}{\numberline {2.1}sample}{2}
+\contentsline {section}{\numberline {3}【仕様】}{2}
+\contentsline {section}{\numberline {4}【具体的な使用例rakefile】}{2}
+\contentsline {section}{\numberline {5}【変更履歴，内容】}{3}
+\contentsline {section}{\numberline {6}【開発メモ】}{3}
+\contentsline {subsection}{\numberline {6.1}制限事項}{3}
+\contentsline {subsection}{\numberline {6.2}【 保留項目】}{4}
+\contentsline {subsection}{\numberline {6.3}【math】}{4}
+\contentsline {subsection}{\numberline {6.4}【user def】}{4}
+\contentsline {section}{\numberline {付録A}詳細な使用法}{4}
+\contentsline {subsubsection}{\numberline {A.0.1}【概要】}{4}
+\contentsline {subsubsection}{\numberline {A.0.2}【使用法】}{5}
+\contentsline {subsubsection}{\numberline {A.0.3}【help】}{5}
+\contentsline {subsubsection}{\numberline {A.0.4}【詳細使用例(-p)】}{5}
+\contentsline {subsubsection}{\numberline {A.0.5}【詳細使用例(-b)】}{6}
+\contentsline {subsubsection}{\numberline {A.0.6}【詳細使用例( --head, --pre, --post】}{6}
+\contentsline {subsubsection}{\numberline {A.0.7}【lib/hiki2latex.rb】}{7}
+\contentsline {paragraph}{kill\_head\_line}{8}
+\contentsline {paragraph}{mod\_abstract}{8}
+\contentsline {section}{\numberline {付録B}コード内容}{9}
+\contentsline {subsection}{\numberline {B.1}起動}{9}
+\contentsline {subsubsection}{\numberline {B.1.1}【変更作業の手順】}{9}
+\contentsline {subsubsection}{\numberline {B.1.2}【設計】}{9}
+\contentsline {paragraph}{【maketitleの挿入】}{9}
+\contentsline {subsubsection}{\numberline {B.1.3}【sample】}{10}
+\contentsline {subsubsection}{\numberline {B.1.4}【pdfの貼り込み】}{10}
+\contentsline {subsection}{\numberline {B.2}math環境}{11}
+\contentsline {subsubsection}{\numberline {B.2.1}【概要】}{11}
+\contentsline {subsubsection}{\numberline {B.2.2}【入力：hiki】}{11}
+\contentsline {subsubsection}{\numberline {B.2.3}【出力：latex】}{11}
+\contentsline {subsubsection}{\numberline {B.2.4}【コード解説】}{11}
+\contentsline {paragraph}{evaluate\_plugin\_block}{11}
+\contentsline {paragraph}{snake\_nameがlatexで引っかかる}{12}
+\contentsline {paragraph}{escape\_snake\_namesを改良(2016/02/14)}{13}
+\contentsline {paragraph}{escape\_snake\_namesを再改良(2016/02/16)}{13}
+\contentsline {subsubsection}{\numberline {B.2.5}【copyright】}{13}
+\contentsline {subsection}{\numberline {B.3}table環境}{14}
+\contentsline {subsubsection}{\numberline {B.3.1}【概要】}{14}
+\contentsline {subsubsection}{\numberline {B.3.2}【仕様】}{14}
+\contentsline {subsubsection}{\numberline {B.3.3}【hiki】}{14}
+\contentsline {subsubsection}{\numberline {B.3.4}【latex】}{14}
+\contentsline {subsubsection}{\numberline {B.3.5}【コード解説】}{14}
+\contentsline {subsection}{\numberline {B.4}source code環境}{17}
+\contentsline {subsubsection}{\numberline {B.4.1}【概要】}{17}
+\contentsline {subsubsection}{\numberline {B.4.2}【hiki2latexの変更】}{17}

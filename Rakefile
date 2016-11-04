@@ -38,21 +38,33 @@ task :hiki2md do
   end
 end
 
-desc "transfer hikis/*.hiki to latex"
-task :latex do
-  target = 'handout_sample'
-  command = "hiki2latex --pre latexes/handout_pre.tex hikis/#{target}.hiki > latexes/#{target}.tex"
+desc "Make related report."
+task :make_texes do
+p  files = Dir.entries('hikis')
+  files.each{|file|
+    next if file.include?('Readme')
+    name=file.split('.')
+    case name[1]
+    when 'hiki'
+      p command="hiki2latex -l 3 --listings -b hikis/#{name[0]}.hiki > latexes/#{name[0]}.tex"
+      system command
+    when 'gif','png','pdf'
+      FileUtils.cp("hikis/#{file}","latexes/#{file}",:verbose=>true)
+    end
+  }
+  source = File.join('hikis',basename+'.hiki')
+  target = File.join('latexes',basename+'.tex')
+  p command= "hiki2latex --listings --head latexes/head.tex --post latexes/post.tex -p #{source} > #{target}"
   system command
-  command = "open latexes/#{target}.tex"
-  system command
+
+  exit
 end
 
-
-desc "transfer hikis/*.hiki to latex"
-task :latex do
-  target = 'handout_sample'
-  command = "hiki2latex --pre latexes/handout_pre.tex hikis/#{target}.hiki > latexes/#{target}.tex"
-  system command
-  command = "open latexes/#{target}.tex"
-  system command
+def kill_head_line(file_name)
+  cont = File.readlines(file_name)
+  unless cont[0]=~/\tableofcontents/ then
+    file = File.open(file_name,'w')
+    file.puts cont[1..-1]
+    file.close
+  end
 end

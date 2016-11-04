@@ -1,0 +1,213 @@
+\documentclass[12pt,a4paper]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{listings}
+% to use japanese correctly, install jlistings.
+\lstset{
+  basicstyle={\small\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\small\itshape\color{red}},
+  keywordstyle={\small\bfseries\color{cyan}},
+  ndkeywordstyle={\small},
+  stringstyle={\small\color{blue}},
+  frame={tb},
+  breaklines=true,
+  numbers=left,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  lineskip=-0.5ex
+}
+\lstdefinestyle{customCsh}{
+  language={csh},
+  numbers=none,
+}
+\lstdefinestyle{customRuby}{
+  language={ruby},
+  numbers=left,
+}
+\lstdefinestyle{customTex}{
+  language={tex},
+  numbers=none,
+}
+\lstdefinestyle{customJava}{
+  language={java},
+  numbers=left,
+}
+\begin{document}
+\title{hiki2latex}
+\author{関西学院大学・理工学部・西谷滋人}
+\date{\today}
+\maketitle
+
+\abstract{
+hiki formatで書かれた文章を，latex formatに変換する
+
+}
+\tableofcontents
+\section{【documents】}\begin{itemize}
+\item \verb|http://rubygems.org/gems/hiki2latex|
+\end{itemize}
+\section{【使用法】}\begin{lstlisting}[style=customCsh]
+Usage: hiki2latex [options] FILE
+    -v, --version                    show program Version.
+    -l, --level VALUE                set Level for output section.
+    -p, --plain FILE                 make Plain document.
+    -b, --bare FILE                  make Bare document.
+        --head FILE                  put headers of maketitle file.
+        --pre FILE                   put preamble file.
+        --post FILE                  put post file.
+        --listings                   use listings.sty for preformat with style.
+\end{lstlisting}\begin{itemize}
+\item より詳細な使用法は，\verb|hiki2latex_gemizing|にある．
+\item 西谷研の内部で利用するときに特化したマニュアルは\verb|こちら(hiki2latex_manual)|．
+\end{itemize}
+\subsection{sample}
+幾つかのサンプルを以下に示す．
+
+\begin{table}[htbp]\begin{center}
+\caption{hiki2latexにより作成されたpdfファイトとその元ネタ．}
+\begin{tabular}{lll}
+\hline
+ソース(hiki表示)  &pdf(latex変換後)  \\ \hline
+\verb|Shunkuntype(https://github.com/daddygongon/shunkuntype/wiki/Shunkuntype_report)|  &\verb|Shunkuntypeのレポート(https://github.com/daddygongon/shunkuntype/wiki/shunkun_report.pdf)|  \\
+\verb|LPSO15研究会の例(LPSO15_fall_meeting_abst)|  &\verb|{{attach_anchor(LPSO_abst.pdf)}}|  \\
+\verb|中間発表hand out例(AbstSample)|  &\verb|{{attach_anchor(AbstSample.pdf)}}|  \\
+\verb|使っているformat集(DocumentFormatter_format_examples)|  \\
+\hline
+\end{tabular}
+\label{default}
+\end{center}\end{table}
+%for inserting separate lines, use \hline, \cline{2-3} etc.
+
+\section{【仕様】}\begin{enumerate}
+\item hikdoc.rbにwrap
+\item header部を独立して提供
+\item author, titleはheadに手を加えて提供
+\item 図はattach\_viewを変換
+\item 表はそのまま表示\begin{enumerate}
+\item tableのmulti対応
+\end{enumerate}
+\item captionはheaderで提供
+\item citeは対応しない．
+\item graph, tableは[h]で提供．
+\end{enumerate}
+\section{【具体的な使用例rakefile】}
+具体的な使用例として\verb|Shunkuntype_report|を作成した時のRakefile.rbを示す．何度も書き直す時は，このようにして自動化すべき．
+\begin{lstlisting}[style=customRuby]
+task :shunkuntype do
+  dir = '~/Sites/nishitani0/Internal/data/text/'
+  targets =["Shunkuntype_manual","Shunkuntype_gemizing","TouchTyping_Coding"]
+  targets.each{|file|
+    p command= "rm -f #{file}.tex"
+    system command
+    p command= "hiki2latex -l 2 --listings -b #{dir}#{file} > #{file}.tex"
+    system command
+  }
+  file="Shunkuntype_report"
+  p command= "rm -f #{file}.tex"
+#  p command= "hiki2latex --listings --head head.tex --post post.tex -p #{dir}#{file} > #{file}.tex"
+  p command= "hiki2latex --listings --post post.tex -p #{dir}#{file} > #{file}.tex"
+  system command
+
+  p command = "open #{file}.tex"
+  system command
+  exit
+end
+\end{lstlisting}
+本文(Shunkuntype\_report.tex)と付録(targets.texs)がある．付録は'-l 2 -b'によってsubsectionからのtitle levelにしてbare modeで作っている．post.texにpostで付け加えるtex部を指定して，appendixをつけている．
+
+\section{【変更履歴，内容】}
+変更履歴，内容を表に示す．15/8月期で基本開発．16/2月期にgem化．
+
+\begin{table}[htbp]\begin{center}
+\caption{変更履歴，内容}
+\begin{tabular}{llll}
+\hline
+memo   &date  &hiki  \\ \hline
+hikidoc.rbからhiki2latex.rb  &15/8/4  &\verb|hiki2latex_init|  \\
+hiki2latex.rbひな形作成  &15/8/5  \\
+@fをStringIOからStringへ  &15/8/5  \\
+graph+caption  &15/8/6  &\verb|LPSO15_fall_meeting_abst|  \\
+math  &15/8/7  &\verb|hiki2latex_math|  \\
+table  &15/8/8  &\verb|hiki2latex_table|  \\
+under\_score  &15/8/11   &\verb|hiki2latex_math|  \\
+gem化  &16/2/13   &\verb|hiki2latex_gemizing|  \\
+listings  &16/2/16   &\verb|hiki2latex_listings|  \\
+\hline
+\end{tabular}
+\label{default}
+\end{center}\end{table}
+%for inserting separate lines, use \hline, \cline{2-3} etc.
+
+\section{【開発メモ】}
+\subsection{制限事項}\begin{itemize}
+\item title中へuriの埋め込みが未対応．\begin{itemize}
+\item uriのverbがlatexのtitle内で使えないため．
+\end{itemize}
+\end{itemize}
+\subsection{【 保留項目】}\begin{enumerate}
+\item includegraphicsの自動提供\begin{enumerate}
+\item hikiに置かれているgraphは劣化版なんでそれをいじるのはあまり筋がよろしくない．
+\item epsならできるかも．hikiのattach\_viewでサイズをどういじっているか．．．
+\end{enumerate}
+\item underbar(\_)がlatexでは全て引っかかる．escapeする？-> 対応済み \verb|hiki2latex_math|\begin{enumerate}
+\item snake表記はrubyではfile名や変数名に頻繁に使われるので対処が必要かも．
+\end{enumerate}
+\end{enumerate}
+\subsection{【math】}
+＄＄での変換がうまくいかない．
+\begin{quote}\begin{verbatim}
+hikiconf.rb
+\end{verbatim}\end{quote}
+での設定を
+\begin{quote}\begin{verbatim}
+#@style           = 'default'
+@style           = 'math'
+\end{verbatim}\end{quote}
+としたらhikiからエラーは出なくなったが．まだまだ．．．．
+
+\subsection{【user def】}\begin{quote}\begin{verbatim}
+\def\Vec#1{\mbox{\boldmath $#1$}}
+\end{verbatim}\end{quote}
+はpreambleに置くことが推奨されているが，実際は，使用するまでに定義すればいい．preambleをいじるようになるころには，latexについての十分な経験があると思われるので，hiki2latexではいじらない．ちょこっと必要ならhiki本文中に埋め込むべし．今の仕様では，
+\begin{lstlisting}[style=customRuby]
+  def initialize(file_name)
+    @buf = ""
+    @buf << HEADER+"\n"
+    @buf <<  "\\begin{document}\n"
+    @buf <<  HikiDoc.to_latex(file_name)+"\n"
+    @buf <<  REFERENCE+"\n"
+    @buf << "\\end{document}\n"
+  end
+
+  def display
+    @buf
+  end
+\end{lstlisting}
+とするのが正しそうなので，無理に入れていない．将来はpreambleを保持するような拡張機能(option)が必要かもしれない．それは，「原典一つ主義」で，hikiを原典とするか，latexを原典とするかの選択が迫られたとき．
+\begin{itemize}
+\item\begin{itemize}
+\item 追記(2015/02/17) いい考察だ．解はでてないが今はhiki2latexに埋め込んで，それらの仕様をできるだけ吸収しようとしている．
+\end{itemize}
+\end{itemize}
+\appendix
+\section{詳細な使用法}
+\input{hiki2latex_gemizing}
+\pagebreak
+\section{コード内容}
+\subsection{起動}
+\input{hiki2latex_init}
+\pagebreak
+\subsection{math環境}
+\input{hiki2latex_math}
+\pagebreak
+\subsection{table環境}
+\input{hiki2latex_table}
+\pagebreak
+\subsection{source code環境}
+\input{hiki2latex_listings}
+\pagebreak
+\end{document}

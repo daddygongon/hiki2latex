@@ -2,6 +2,7 @@
 convert hikidoc text to latex format.
 
 \![badge](https://badge.fury.io/rb/hiki2latex.png)
+
 ## Installation
 Add this line to your application's Gemfile:
 ```ruby

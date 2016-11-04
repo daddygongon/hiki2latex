@@ -1,0 +1,38 @@
+
+\subsubsection{【概要】}
+hikiで書いたのを中間発表の予稿集用に変換するマニュアル．
+
+\subsubsection{【下準備】}\begin{enumerate}
+\item yahataProjectをinstall
+\item rake initを実行．passwordを聞かれたときはdonkeyかnishitaniに知らせる
+\item setenvでpathを設定
+\end{enumerate}
+\subsubsection{【手順】}\begin{enumerate}
+\item hikiにGraduate\_handout原稿を作成
+\item 作業用のdirectoryを作成
+\item そこで，hiki2abst.rb ~/Sites/hiki-1.0/data/text/Graduate\_handout > Graduate\_handout.tex
+\item open Graduate\_handout.tex
+\item command-Tでpdfへ変換．
+\end{enumerate}
+\subsubsection{【graph作成手順】}
+\paragraph{hiki}\begin{enumerate}
+\item 適当なサイズに調整したファイルを添付ファイルとしてUpLoad
+\end{enumerate}\begin{itemize}
+\item ImageMagickがinstallされているとして，convert A.png -scale 50% B.png
+\end{itemize}
+\paragraph{latex directory}\begin{enumerate}
+\item hikiでファイルを選択してDownLoad
+\item 作業用のlatex directoryへ移す．
+\item ebb B.pngでB.bbを作成．
+\item TeXShopでcompileすればいけるはず．
+\end{enumerate}
+\subsubsection{【TeXShopの設定】}
+\paragraph{ファイルが文字化け}\begin{itemize}
+\item 「設定」->書類->エンコーディング　Unicode(UTF-8)
+\item 　同じタグの「設定プロファイル」->　pTeX(ptex2pdf)を選択
+\item TeXShopを再起動
+\item compileすればいけるはず．
+\end{itemize}
+\paragraph{compileうまくいかないとき．}\begin{itemize}
+\item *.auxファイルを消去して，再compile．
+\end{itemize}

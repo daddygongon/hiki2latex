@@ -1,0 +1,32 @@
+{{toc}}
+!【概要】
+hikiで書いたのを中間発表の予稿集用に変換するマニュアル．
+!【下準備】
+#yahataProjectをinstall
+#rake initを実行．passwordを聞かれたときはdonkeyかnishitaniに知らせる
+#setenvでpathを設定
+!【手順】
+#hikiにGraduate_handout原稿を作成
+# 作業用のdirectoryを作成
+#そこで，hiki2abst.rb ~/Sites/hiki-1.0/data/text/Graduate_handout > Graduate_handout.tex
+# open Graduate_handout.tex
+# command-Tでpdfへ変換．
+
+!【graph作成手順】
+!!hiki
+# 適当なサイズに調整したファイルを添付ファイルとしてUpLoad
+* ImageMagickがinstallされているとして，convert A.png -scale 50% B.png
+!!latex directory
+# hikiでファイルを選択してDownLoad
+# 作業用のlatex directoryへ移す．
+# ebb B.pngでB.bbを作成．
+# TeXShopでcompileすればいけるはず．
+
+! 【TeXShopの設定】
+!!ファイルが文字化け
+* 「設定」->書類->エンコーディング　Unicode(UTF-8)
+*　同じタグの「設定プロファイル」->　pTeX(ptex2pdf)を選択
+* TeXShopを再起動
+* compileすればいけるはず．
+!!compileうまくいかないとき．
+* *.auxファイルを消去して，再compile．
