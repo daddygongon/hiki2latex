@@ -1,0 +1,307 @@
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.7.31)  4 NOV 2016 17:08
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**hiki2latex
+(./hiki2latex.tex
+pLaTeX2e <2006/11/10> (based on LaTeX2e <2015/01/01> patch level 0)
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(/usr/local/texlive/2015/texmf-dist/tex/platex/jsclasses/jsarticle.cls
+Document Class: jsarticle 2014/02/07 okumura
+LaTeX Info: Redefining \rmfamily on input line 352.
+LaTeX Info: Redefining \sffamily on input line 355.
+LaTeX Info: Redefining \ttfamily on input line 358.
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY1/mc/m/n --> JY1/gt/m/n on input line 423.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 613.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 613.
+\fullwidth=\dimen118
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 760.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 760.
+\c@part=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\@abstractbox=\box41
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\js@tocl@width=\dimen119
+\@lnumwidth=\dimen120
+\bibindent=\dimen121
+LaTeX Info: Redefining \TeX on input line 1731.
+LaTeX Info: Redefining \LaTeX on input line 1757.
+LaTeX Info: Redefining \LaTeXe on input line 1782.
+\heisei=\count89
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 94.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/dvipdfmx-def/dvipdfmx.def
+File: dvipdfmx.def 2015/03/26 v4.04 LaTeX color/graphics driver for dvipdfmx (T
+eX Live/ChoF)
+))
+\Gin@req@height=\dimen122
+\Gin@req@width=\dimen123
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvipdfmx.def on input line 142.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count90
+\lst@gtempboxa=\box42
+\lst@token=\toks16
+\lst@length=\count91
+\lst@currlwidth=\dimen124
+\lst@column=\count92
+\lst@pos=\count93
+\lst@lostspace=\dimen125
+\lst@width=\dimen126
+\lst@newlines=\count94
+\lst@lineno=\count95
+\lst@maxwidth=\dimen127
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count96
+\lst@skipnumbers=\count97
+\lst@framebox=\box43
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2014/09/06 1.5e listings configuration
+))
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
+
+
+LaTeX Warning: Unused global option(s):
+    [a4jpaper].
+
+(./hiki2latex.aux
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+
+LaTeX Warning: Label `default' multiply defined.
+
+)
+\openout1 = `hiki2latex.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+\c@lstlisting=\count98
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 16.60605pt on input line 43.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 16.60605pt on input line 43.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 43.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 43.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 43.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 45.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 45.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 45.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 45.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 49.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 49.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 49.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 49.
+ (./hiki2latex.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 4.805pt on input line 3.
+)
+\tf@toc=\write3
+\openout3 = `hiki2latex.toc'.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 51.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 56.
+LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 56.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 56.
+ [1
+
+]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 67.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 11.53198pt on input line 67.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 72.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 72.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 75.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 75.
+
+Overfull \hbox (451.63043pt too wide) in paragraph at lines 72--82
+ [] 
+ []
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2014/09/06 1.5e listings language file
+)
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 100.
+ [2]
+LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 111.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 111.
+LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 111.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 111.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 148.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 148.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 148.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 148.
+
+[3] (./hiki2latex_gemizing.tex [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2014/09/06 1.5e listings language file
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+) [5]
+[6] [7]) [8] (./hiki2latex_init.tex [9]) [10] (./hiki2latex_math.tex
+File: ./Math.png Graphic file (type bmp)
+
+<./Math.png> [11] [12]) [13] (./hiki2latex_table.tex
+File: ./table.png Graphic file (type bmp)
+ <./table.png> [14]
+[15]) [16] (./hiki2latex_listings.tex [17]) [18] (./hiki2latex.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3781 strings out of 493777
+ 51868 string characters out of 6151334
+ 275822 words of memory out of 5000000
+ 7240 multiletter control sequences out of 15000+600000
+ 16908 words of font info for 76 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 47i,9n,76p,376b,1948s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on hiki2latex.dvi (18 pages, 125016 bytes).
