@@ -51,6 +51,7 @@ A21  &A11  &A22  &A12  &  ¥¥
 ** 連結の中心(c_rs)に内容を表記
 * 横連結をmulticolumnで処理
 ** ついでに最大列数(max_col)を記録
+
 <<< ruby
 bob% cat table.rb
 cont = File.readlines("table")
