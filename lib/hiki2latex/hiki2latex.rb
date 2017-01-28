@@ -222,7 +222,8 @@ class LatexOutput
   end
 
   def list_open(type)
-    @f.slice!(-1) #こいつがわからん．\begin{item..}の前に改行が入るから．．．なぜ？
+#    @f.slice!(-1) 
+    #こいつがわからん．\begin{item..}の前に改行が入るから．．．なぜ？
     #二重のitemizeでおかしくなるが，へんなところで改行は入らないので．
     case type
     when 'ul' then
