@@ -222,7 +222,7 @@ class LatexOutput
   end
 
   def list_open(type)
-#    @f.slice!(-1) 
+    #    @f.slice!(-1) #\\beign{enumerate}が消える場合があるので，再度アウト
     #こいつがわからん．\begin{item..}の前に改行が入るから．．．なぜ？
     #二重のitemizeでおかしくなるが，へんなところで改行は入らないので．
     case type
