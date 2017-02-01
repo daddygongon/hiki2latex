@@ -264,13 +264,15 @@ class LatexOutput
   end
 
   def dlist_item(dt, dd)
+    tmp_dt = escape_snake_names(dd)
+    tmp_dd = escape_snake_names(dt)
     case
     when dd.empty?
-      @f << "\\item[#{dt}]"
+      @f << "\\item[#{tmp_dt}]"
     when dt.empty?
-      @f << "\\item #{dd}"
+      @f << "\\item #{tmp_dd}"
     else
-      @f << "\\item[#{dt}] #{dd}\n"
+      @f << "\\item[#{tmp_dt}] #{tmp_dd}\n"
     end
   end
 
