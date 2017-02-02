@@ -1,7 +1,11 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'hiki2latex'
+#require 'aruba/rspec'
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-def assert(hiki, latex)
-  converted = HikiDoc.to_latex(hiki)
-  expect(converted).to eq(latex)
+if RUBY_VERSION < '1.9.3'
+  ::Dir.glob(::File.expand_path('../support/*.rb', __FILE__)).each { |f| require File.join(File.dirname(f), File.basename(f, '.rb')) }
+  ::Dir.glob(::File.expand_path('../support/**/*.rb', __FILE__)).each { |f| require File.join(File.dirname(f), File.basename(f, '.rb')) }
+else
+  ::Dir.glob(::File.expand_path('../support/*.rb', __FILE__)).each { |f| require_relative f }
+  ::Dir.glob(::File.expand_path('../support/**/*.rb', __FILE__)).each { |f| require_relative f }
 end
