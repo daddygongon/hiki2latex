@@ -181,12 +181,13 @@ class LatexOutput
   end
 
   def em(item)
-#    @f << "\\textbf\{#{item}\}"
-    @f << "#{item}"
+    "\\textbf\{#{item}\}"
+#    "#{item}"
   end
 
   def strong(item)
-#    @f << "\\textbf\{#{item}\}"
+#    p item
+    "\\textbf\{#{item}\}"
   end
 
   def block_preformatted(str, info)

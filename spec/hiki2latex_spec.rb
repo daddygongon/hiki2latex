@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Hiki2latex do
+  it 'should make emphasised sentence.' do
+    assert("\'\'\'emphasis\'\'\'",  "\\textbf{emphasis}\n\n")
+  end
+
   it 'should make bare latex file.' do
     assert("test",  "test\n\n")
   end
