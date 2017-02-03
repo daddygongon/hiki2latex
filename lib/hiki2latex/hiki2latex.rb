@@ -180,6 +180,10 @@ class LatexOutput
     # use ulem or jumoline
   end
 
+  def hrule
+    "\\hrulefill"
+  end
+
   def em(item)
     "\\textbf\{#{item}\}"
 #    "#{item}"
