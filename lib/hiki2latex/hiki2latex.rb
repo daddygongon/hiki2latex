@@ -49,7 +49,7 @@ class LatexOutput
 
   def headline(level, title)
     title = escape_snake_names(title)
-    p tmp=title.split(/:/)
+    tmp=title.split(/:/)
     if tmp.size==2 then
       case tmp[0]
       when 'title','author','date','abstract'
