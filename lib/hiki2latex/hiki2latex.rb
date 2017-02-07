@@ -215,7 +215,7 @@ class LatexOutput
 
   def preformatted_with_style(str,style)
     @f.slice!(-1)
-    @f << "\\begin{lstlisting}[style=#{style},basicstyle={\scriptsize\ttfamily}]\n"
+    @f << "\\begin{lstlisting}[style=#{style},basicstyle={\\scriptsize\\ttfamily}]\n"
 #    @f << "\\begin{lstlisting}[style=#{style}]\n"
     @f << str+"\n"
     @f << "\\end{lstlisting}\n"
