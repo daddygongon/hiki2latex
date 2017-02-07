@@ -198,7 +198,7 @@ class LatexOutput
     if (@listings==true and info!=nil) then
       style='customRuby' if info=='ruby'
       style='customCsh' if (info=='tcsh' or info=='csh')
-      style='customTeX' if info=='tex'
+      style='customTeX' if ( info=='tex' or info=='latex')
       style='customJava' if info=='java'
       preformatted_with_style(str,style)
     else
@@ -215,7 +215,8 @@ class LatexOutput
 
   def preformatted_with_style(str,style)
     @f.slice!(-1)
-    @f << "\\begin{lstlisting}[style=#{style}]\n"
+    @f << "\\begin{lstlisting}[style=#{style},basicstyle={\scriptsize\ttfamily}]\n"
+#    @f << "\\begin{lstlisting}[style=#{style}]\n"
     @f << str+"\n"
     @f << "\\end{lstlisting}\n"
   end
