@@ -49,7 +49,7 @@ class LatexOutput
 
   def headline(level, title)
     title = escape_snake_names(title)
-    if tmp=title.match(/(.+): (.+)/)
+    if tmp=title.match(/(.+?):(.+)/)
 #    if tmp.size==2 then
       case tmp[1]
       when 'title','author','date','abstract'
