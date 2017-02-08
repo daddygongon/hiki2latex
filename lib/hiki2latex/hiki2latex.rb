@@ -49,17 +49,17 @@ class LatexOutput
 
   def headline(level, title)
     title = escape_snake_names(title)
-    tmp=title.split(/:/)
-    if tmp.size==2 then
-      case tmp[0]
+    if tmp=title.match(/(.+):(.+)/)
+#    if tmp.size==2 then
+      case tmp[1]
       when 'title','author','date','abstract'
-        @head << "\\#{tmp[0]}\{#{tmp[1]}\}\n"
+        @head << "\\#{tmp[1]}\{#{tmp[2]}\}\n"
       when 'Title','Author','Date','Abstract'
-        @head << "\\#{tmp[0].downcase}\{#{tmp[1]}\}\n"
+        @head << "\\#{tmp[1].downcase}\{#{tmp[2]}\}\n"
       when 'caption'
-        @caption << "#{tmp[1]}"
+        @caption << "#{tmp[2]}"
       when 'reference'
-        @f << "\\section*\{#{tmp[1]}\}\n"
+        @f << "\\section*\{#{tmp[2]}\}\n"
       else
 #        @f << "\\#{tmp[0]}\{#{tmp[1]}\}\n"
         headline_section(level,title)
