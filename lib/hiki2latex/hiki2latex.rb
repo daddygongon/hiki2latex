@@ -135,7 +135,9 @@ class LatexOutput
     text
   end
 
-
+  def compile_modifier(text)
+    text
+  end
 
   def escape_html(text)
     text
