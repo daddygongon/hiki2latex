@@ -304,23 +304,25 @@ class LatexOutput
       t_matrix << tmp
     }
     t_matrix.each_with_index{|line,i|
-      line.each_with_index{|ele,j|
-        if ele=~/\^+/ then
+      line.each_with_index{|ele,j| #vertical join
+        if m=ele.match(/(\^+)(.+)/) then
           t_matrix[i][j]=""
-          rs=$&.size
-          c_rs=rs/2
+          rs=m[1].size
+          c_rs=0 #for upper
+#          c_rs=rs/2 #for centering
+#          c_rs=rs-1 #for loser
           rs.times{|k| t_matrix[i+k+1].insert(j,"")}
-          t_matrix[i+c_rs][j]=$'
+          t_matrix[i+c_rs][j]=m[2]
         end
       }
     }
     max_col=0
     t_matrix.each_with_index{|line,i|
       n_col=line.size
-      line.each_with_index{|ele,j|
-        if ele=~/>+/ then
-          cs=$&.size
-          t_matrix[i][j]= "\\multicolumn{#{cs+1}}{#{DT_ALIGN}}{#{$'}} "
+      line.each_with_index{|ele,j| #horizontal join
+        if m=ele.match(/(>+)(.+)/) then
+          cs=m[1].size
+          t_matrix[i][j]= "\\multicolumn{#{cs+1}}{#{DT_ALIGN}}{#{m[2]}} "
           n_col+=cs
         end
       }
