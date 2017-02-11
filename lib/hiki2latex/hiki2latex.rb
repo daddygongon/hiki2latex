@@ -135,9 +135,7 @@ class LatexOutput
     text
   end
 
-  def compile_modifier(text)
-    text
-  end
+#  def compile_modifier  ==a== とかのやつ．emphasisでやったよな．
 
   def escape_html(text)
     text
@@ -180,6 +178,7 @@ class LatexOutput
 
   def del(item)
     # use ulem or jumoline
+    "\\sout\{#{item}\}"
   end
 
   def hrule
