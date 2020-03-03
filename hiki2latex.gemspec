@@ -32,7 +32,7 @@ EOF
   spec.required_ruby_version = '>= 1.8.6'
 
   spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 12.3.3"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "yard", "~> 0.9.11"
   spec.add_development_dependency "test-unit"
